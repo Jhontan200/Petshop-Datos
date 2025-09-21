@@ -1,21 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 🎥 Carrusel automático
+    // ⚡️ Inicialización de Supabase
+    const SUPABASE_URL = 'https://ifypvveqqshujwlniuox.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmeXB2dmVxcXNodWp3bG5pdW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxMzYxNzEsImV4cCI6MjA3MzcxMjE3MX0.0VyJAqAeEUo6S4p3WWvBXdCAjxKvzm5Ste2CKxjcX7Y';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // 🎥 Carrusel de imágenes
     const slides = document.querySelectorAll(".slide");
     let index = 0;
 
-    function changeSlide() {
-        slides.forEach((slide, i) => {
-            slide.style.opacity = i === index ? "1" : "0";
+    function showSlide(n) {
+        slides.forEach(slide => {
+            slide.style.opacity = "0";
         });
-
-        index = (index + 1) % slides.length;
+        if (slides[n]) {
+            slides[n].style.opacity = "1";
+        }
     }
 
-    setInterval(changeSlide, 2500); // 🔥 Cambio cada 2.5 segundos
+    function changeSlide() {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+    }
 
-    // 📝 Validación de formulario de registro
-    document.querySelector(".register-form").addEventListener("submit", function (event) {
-        event.preventDefault(); // ⚠️ Evita el envío hasta validar
+    showSlide(index);
+    setInterval(changeSlide, 2500);
+
+    // 📝 Registro del formulario
+    document.querySelector(".register-form").addEventListener("submit", async function (event) {
+        event.preventDefault();
 
         const nombre = document.querySelector("#nombre").value.trim();
         const apellidoPaterno = document.querySelector("#apellido-paterno").value.trim();
@@ -25,13 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.querySelector("#email").value.trim();
         const password = document.querySelector("#password").value.trim();
 
-        // 🛠 Expresiones regulares para validar
-        const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/; // 🔠 Solo letras y espacios
-        const soloNumeros = /^[0-9]+$/; // 🔢 Solo números
-        const correoGmail = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; // 📧 Solo @gmail.com
-        const passwordSegura = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // 🔐 8+ caracteres, 1 mayúscula, 1 número, 1 especial
+        const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+        const soloNumeros = /^[0-9]+$/;
+        const correoGmail = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        const passwordSegura = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-        // 🚨 Validaciones
         if (!soloLetras.test(nombre)) {
             alert("⚠️ El nombre solo puede contener letras.");
             return;
@@ -44,12 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("⚠️ El apellido materno solo puede contener letras.");
             return;
         }
-        if (!soloNumeros.test(ci)) {
-            alert("⚠️ El C.I. solo puede contener números.");
+        if (!soloNumeros.test(ci) || ci.length !== 7) {
+            alert("⚠️ El C.I. debe contener exactamente 7 dígitos.");
             return;
         }
-        if (!soloNumeros.test(celular)) {
-            alert("⚠️ El celular solo puede contener números.");
+        if (!soloNumeros.test(celular) || celular.length !== 8) {
+            alert("⚠️ El celular debe contener exactamente 8 dígitos.");
             return;
         }
         if (!correoGmail.test(email)) {
@@ -61,17 +71,41 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // ✅ Guardar correo en localStorage
-        localStorage.setItem("usuarioEmail", email);
+        // 🔥 Paso 1: Registrar al usuario de forma segura con Supabase Auth
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    nombre: nombre,
+                    apellido_paterno: apellidoPaterno,
+                    apellido_materno: apellidoMaterno,
+                    ci: ci,
+                    celular: celular,
+                    correo_electronico: email
+                }
+            }
+        });
 
+        if (error) {
+            console.error("Error en la autenticación:", error);
+            if (error.message.includes("Email already registered")) {
+                alert("⚠️ Error: El correo ya está registrado.");
+            } else {
+                alert("Hubo un error en la autenticación. Por favor, inténtalo de nuevo.");
+            }
+            return;
+        }
+        
+        localStorage.setItem("usuarioEmail", email);
         alert("✅ Registro exitoso. ¡Bienvenido!");
-        this.submit(); // 🔥 Envía el formulario si todo está bien
+        window.location.href = "inicio_sesion.html";
     });
 
-    // 🔹 Restricción en tiempo real: máximo 8 caracteres en contraseña, incluso si copian y pegan
+    // 🔹 Restricción en tiempo real: máximo 8 caracteres en contraseña
     document.querySelector("#password").addEventListener("input", function () {
         if (this.value.length > 8) {
-            this.value = this.value.substring(0, 8); // 🔥 Recorta a 8 caracteres
+            this.value = this.value.substring(0, 8);
         }
     });
 });
