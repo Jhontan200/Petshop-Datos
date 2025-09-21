@@ -117,12 +117,20 @@ document.addEventListener("DOMContentLoaded", function () {
         
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
-            eyeOpenIcon.style.display = 'none';
-            eyeClosedIcon.style.display = 'block';
+            if (eyeOpenIcon) eyeOpenIcon.style.display = 'none';
+            if (eyeClosedIcon) eyeClosedIcon.style.display = 'block';
         } else {
             passwordInput.type = 'password';
-            eyeOpenIcon.style.display = 'block';
-            eyeClosedIcon.style.display = 'none';
+            if (eyeOpenIcon) eyeOpenIcon.style.display = 'block';
+            if (eyeClosedIcon) eyeClosedIcon.style.display = 'none';
         }
+    };
+    
+    // ↩️ Función para el botón "Cancelar"
+    const cancelButton = document.querySelector(".cancel-btn");
+    if (cancelButton) {
+        cancelButton.addEventListener("click", function() {
+            window.location.href = "inicio_sesion.html";
+        });
     }
 });

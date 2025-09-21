@@ -50,7 +50,7 @@ footer{
     color: #834700;
 }
 
-.input, .register-btn {
+.input, .register-btn, .cancel-btn {
     width: 100%; /* 🔥 Ahora todos tienen el mismo ancho */
     padding: 12px; /* Uniformidad en tamaño */
     margin-bottom: 10px;
@@ -72,7 +72,19 @@ footer{
 .register-btn:hover {
     background-color: #602805; /* 🔥 Cambio de color al pasar el mouse */
 }
+.cancel-btn {
+    background-color: #d1d0ce;
+    color: black;
+    font-weight: 550;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
 
+.cancel-btn:hover {
+    background-color: #585756; /* 🔥 Cambio de color al pasar el mouse */
+    color: #b6b5b3;
+}
 /* Estilos del carrusel */
 .carousel {
     position: relative;
