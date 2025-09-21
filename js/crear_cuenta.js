@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         localStorage.setItem("usuarioEmail", email);
         alert("✅ Registro exitoso. ¡Bienvenido!");
-        window.location.href = "inicio_sesion.html";
+        window.location.href = "index.html";
     });
 
     // 🔹 Restricción en tiempo real: máximo 8 caracteres en contraseña
@@ -108,4 +108,21 @@ document.addEventListener("DOMContentLoaded", function () {
             this.value = this.value.substring(0, 8);
         }
     });
+
+    // 👁️ Función para ver y ocultar la contraseña (nueva adición)
+    window.togglePassword = function() {
+        const passwordInput = document.getElementById('password');
+        const eyeOpenIcon = document.getElementById('eye-open');
+        const eyeClosedIcon = document.getElementById('eye-closed');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeOpenIcon.style.display = 'none';
+            eyeClosedIcon.style.display = 'block';
+        } else {
+            passwordInput.type = 'password';
+            eyeOpenIcon.style.display = 'block';
+            eyeClosedIcon.style.display = 'none';
+        }
+    }
 });

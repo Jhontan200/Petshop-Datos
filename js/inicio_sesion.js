@@ -18,24 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(changeSlide, 2500);
 
     // 🔹 Mostrar/Ocultar contraseña con icono
-    const togglePassword = document.getElementById("toggle-password");
-    if (togglePassword) {
-        togglePassword.addEventListener("click", function () {
-            const passwordField = document.getElementById("password");
-            const icon = this.querySelector("i");
-
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
-            }
-        });
+    window.togglePassword = function() {
+        const passwordInput = document.getElementById('password');
+        const eyeOpenIcon = document.getElementById('eye-open');
+        const eyeClosedIcon = document.getElementById('eye-closed');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeOpenIcon.style.display = 'none';
+            eyeClosedIcon.style.display = 'block';
+        } else {
+            passwordInput.type = 'password';
+            eyeOpenIcon.style.display = 'block';
+            eyeClosedIcon.style.display = 'none';
+        }
     }
-
     // 🔹 Lógica de inicio de sesión
     document.querySelector(".login-btn").addEventListener("click", async function (event) {
         event.preventDefault(); // Previene el envío del formulario
