@@ -1,38 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 🔹 Validación del formulario de inicio de sesión
-    document.querySelector(".login-btn").addEventListener("click", function () {
-        const email = document.querySelector("#email").value.trim();
-        const password = document.querySelector("#password").value.trim();
-
-        // Validar que el correo sea de Gmail
-        if (!email.endsWith("@gmail.com")) {
-            alert("⚠️ Ingresa un correo con @gmail.com.");
-            return;
-        }
-
-        // Validar que los campos no estén vacíos
-        if (email === "" || password === "") {
-            alert("⚠️ No puedes dejar campos vacíos.");
-            return;
-        }
-
-        // Validar que la contraseña tenga al menos 8 caracteres
-        if (password.length < 8) {
-            alert("⚠️ La contraseña debe tener al menos 8 caracteres.");
-            return;
-        }
-
-        // ✅ Guardar correo en localStorage
-        localStorage.setItem("usuarioEmail", email);
-
-        alert(`✅ Iniciando sesión con:\nCorreo: ${email}\nContraseña: [Oculta]`);
-    });
-
-    // 🔹 Animación en "Crear Cuenta" al hacer clic en register-btn (sin redireccionamiento)
-    document.querySelector(".register-btn").addEventListener("click", function () {
-        document.body.style.transition = "opacity 0.8s ease-in-out"; // 🔥 Animación suave
-        document.body.style.opacity = "0"; // 🔥 Desvanecer pantalla
-    });
+    // ⚡️ Inicialización de Supabase
+    const SUPABASE_URL = 'https://ifypvveqqshujwlniuox.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmeXB2dmVxcXNodWp3bG5pdW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxMzYxNzEsImV4cCI6MjA3MzcxMjE3MX0.0VyJAqAeEUo6S4p3WWvBXdCAjxKvzm5Ste2CKxjcX7Y';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // 🔹 Carrusel de imágenes con fade-in
     const slides = document.querySelectorAll(".slide");
@@ -45,28 +15,67 @@ document.addEventListener("DOMContentLoaded", function () {
         index = (index + 1) % slides.length;
     }
 
-    setInterval(changeSlide, 2500); // Cambio de imagen cada 2.5 segundos
+    setInterval(changeSlide, 2500);
 
     // 🔹 Mostrar/Ocultar contraseña con icono
-    document.getElementById("toggle-password").addEventListener("click", function () {
-        const passwordField = document.getElementById("password");
-        const icon = this.querySelector("i");
+    const togglePassword = document.getElementById("toggle-password");
+    if (togglePassword) {
+        togglePassword.addEventListener("click", function () {
+            const passwordField = document.getElementById("password");
+            const icon = this.querySelector("i");
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            icon.classList.remove("fa-eye");
-            icon.classList.add("fa-eye-slash"); // Cambia a ojo cerrado
-        } else {
-            passwordField.type = "password";
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye"); // Cambia a ojo abierto
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        });
+    }
+
+    // 🔹 Lógica de inicio de sesión
+    document.querySelector(".login-btn").addEventListener("click", async function (event) {
+        event.preventDefault(); // Previene el envío del formulario
+
+        const email = document.querySelector("#email").value.trim();
+        const password = document.querySelector("#password").value.trim();
+
+        // Validaciones del formulario
+        if (!email.endsWith("@gmail.com")) {
+            alert("⚠️ Ingresa un correo con @gmail.com.");
+            return;
         }
-    });
+        if (email === "" || password === "") {
+            alert("⚠️ No puedes dejar campos vacíos.");
+            return;
+        }
+        if (password.length < 8) {
+            alert("⚠️ La contraseña debe tener al menos 8 caracteres.");
+            return;
+        }
 
-    // 🔹 Restricción en tiempo real: máximo 8 caracteres en contraseña
-    document.querySelector("#password").addEventListener("input", function () {
-        if (this.value.length > 8) {
-            this.value = this.value.substring(0, 8); // 🔥 Recorta a 8 caracteres
+        // 🔥 Paso 1: Iniciar sesión con Supabase Auth
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) {
+            console.error("Error en la autenticación:", error);
+            alert("⚠️ Error: El correo o la contraseña son incorrectos.");
+        } else {
+            console.log("Sesión iniciada con éxito:", data);
+            
+            // ✅ Paso 2: Guardar el email en localStorage
+            localStorage.setItem("usuarioEmail", email);
+            
+            alert("✅ ¡Inicio de sesión exitoso!");
+            
+            // Redirige al usuario a la página de inicio
+            window.location.href = "index.html"; 
         }
     });
 });
