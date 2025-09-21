@@ -133,10 +133,10 @@
                     <input type="text" id="apellido-materno" class="input" required>
 
                     <label for="ci" class="label">C.I. (Carnet de Identidad):</label>
-                    <input type="text" id="ci" class="input" required>
+                    <input type="text" id="ci" class="input" maxlength="7" required>
 
                     <label for="celular" class="label">Celular:</label>
-                    <input type="tel" id="celular" class="input" required>
+                    <input type="tel" id="celular" class="input" maxlength="8" required>
 
                     <label for="email" class="label">Correo Electrónico:</label>
                     <input type="email" id="email" class="input" required>
@@ -217,6 +217,8 @@
         </div>
     </div>
 
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/main.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/carrito.js"></script>
