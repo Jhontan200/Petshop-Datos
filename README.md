@@ -1,75 +1,66 @@
-🛒 PETSHOP E-COMMERCE: Venta de Productos para Mascotas
-⭐ Objetivo del Proyecto
-Este proyecto es la simulación de un sitio web de comercio electrónico (e-commerce) enfocado en la venta de productos y artículos para mascotas. Su objetivo principal es demostrar las funcionalidades básicas de navegación, visualización de productos y gestión de un carrito de compras.
+# 🐾 PETSHOP E-COMMERCE
+Venta de Productos para Mascotas
+
+## ⭐ Objetivo del Proyecto
+Este proyecto simula un sitio web de comercio electrónico especializado en productos para mascotas. Su propósito es demostrar funcionalidades clave como:
+
+- 🧭 Navegación entre secciones  
+- 🛍️ Visualización de productos  
+- 🛒 Gestión de carrito de compras  
+- 🔐 Simulación de autenticación de usuarios  
 
 <p align="center">
-<!-- LOGO DEL PROYECTO -->
-<img src="imagenes/Logo.png" alt="PetShop Logo">
+<img src="imagenes/Logo.png" alt="PetShop Logo" width="200">
 </p>
 
-🛠️ Tecnologías Utilizadas
-Este proyecto utiliza el Stack Web Clásico para el frontend, lo que garantiza un rápido despliegue y compatibilidad, y una solución moderna para la gestión de datos.
+## 🛠️ Tecnologías Utilizadas
+Este proyecto combina el stack web clásico para el frontend con una solución moderna de backend como servicio (BaaS):
+| Tecnología | Rol |
+|-----------|-----|
+| **HTML** | Estructura y contenido de la página web. |
+| **CSS** | Estilos visuales y diseño responsivo |
+| **JavaScript** | LLógica de la aplicación y la interactividad del E-commerce (Frontend). |
+| **Supabase** | Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario. |
 
-Tecnología
+## 🚀 Instalación y Ejecución Local
+Este proyecto no requiere instalación de dependencias. Está listo para ejecutarse directamente en tu navegador.
 
-Rol
+🔧 Prerrequisitos
+Navegador web moderno (Chrome, Firefox, Edge, etc.)
 
-JavaScript
-
-Lógica de la aplicación y la interactividad del E-commerce (Frontend).
-
-HTML
-
-Estructura y contenido de la página web.
-
-CSS
-
-Diseño y estilos visuales de la interfaz.
-
-Supabase
-
-Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario.
-
-🚀 Instalación y Ejecución Local
-Dado que el proyecto está construido con tecnologías web frontend puras (HTML, CSS, JS), no requiere de comandos de instalación (npm install, pip, etc.) ni de pasos de configuración adicionales.
-
-Prerrequisitos
-Un navegador web moderno (Chrome, Firefox, Edge, etc.).
-
-Pasos
-Clonar el repositorio:
-Abre tu terminal y ejecuta el comando de clonación completo:
-
+## 📦 Pasos para Ejecutar
+```bash
+# Clona el repositorio
 git clone [https://github.com/Jhontan200/Petshop-Datos.git](https://github.com/Jhontan200/Petshop-Datos.git)
 
-Abrir el proyecto:
-Navega al directorio del proyecto y simplemente abre el archivo principal (index.html) con tu navegador preferido.
-
+# Accede al directorio
 cd Petshop-Datos
-# Abre index.html en tu navegador
 
-🌐 Uso del Proyecto (Demo)
-Puedes interactuar con el proyecto inmediatamente, ya sea ejecutándolo localmente o visitando el enlace de despliegue:
+# Abre el archivo principal en tu navegador
+index.html
+```
 
-Acceso Directo (GitHub Pages)
-El proyecto está desplegado y disponible en línea:
+## 🌐 Demo en Línea
+Puedes explorar el proyecto directamente desde GitHub Pages:
 
-➡️ Acceder al E-commerce aquí:
+🔗 Acceder al E-commerce
 https://jhontan200.github.io/Petshop-Datos/
 
-Interacción del Usuario
-El usuario puede navegar a través de las diferentes páginas del sitio para:
+🧭 Funcionalidades del Usuario
+El sitio ofrece las siguientes características principales:
 
-Inicio de Sesión y Registro: Utilizar las funciones de Inicio de Sesión y Crear Cuenta para simular la autenticación de usuarios.
+🔐 Inicio de Sesión / Registro: Simulación de autenticación básica.
 
-Explorar el Catálogo: Visualizar todos los productos disponibles para mascotas.
+🛍️ Explorar Catálogo: Visualización de productos disponibles.
 
-Carrito de Compras: Añadir y gestionar los artículos seleccionados.
+🛒 Carrito de Compras: Añadir, eliminar y gestionar artículos seleccionados.
 
-🤝 Autor y Contacto
-Este proyecto fue desarrollado por:
+## 👨‍💻 Autor y Contacto
+Desarrollado por:
 
-Jhontan200 - https://github.com/Jhontan200
+**Jhontan200**
 
-Licencia
-Distribuido bajo la Licencia MIT. Ve el archivo LICENSE para más información.
+[🔗 Perfil GitHub](https://github.com/Jhontan200)
+
+## 📄 Licencia
+Distribuido bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
