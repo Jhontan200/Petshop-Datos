@@ -64,3 +64,4 @@ Desarrollado por:
 
 ## 📄 Licencia
 Distribuido bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+[![GitHub license](https://img.shields.io/github/license/Jhontan200/Petshop-Datos)](./LICENSE) 
