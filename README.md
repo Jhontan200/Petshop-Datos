@@ -66,8 +66,6 @@ Explorar el Catálogo: Visualizar todos los productos disponibles para mascotas.
 
 Carrito de Compras: Añadir y gestionar los artículos seleccionados.
 
-[AÑADE UNA FUNCIÓN CLAVE ADICIONAL SI APLICA]
-
 🤝 Autor y Contacto
 Este proyecto fue desarrollado por:
 
