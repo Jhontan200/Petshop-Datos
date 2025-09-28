@@ -21,8 +21,8 @@ Este proyecto combina el stack web clásico para el frontend con una solución m
 |--------------------|-----------|
 | 📝 **HTML** | Estructura y contenido de la página web. |
 | 🎨 **CSS** | Estilos visuales y diseño responsivo. |
-| ⚡ **JavaScript** | Lógica de la aplicación y la interactividad del E-commerce (Frontend). |
-| 🛢️ **Supabase** | Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario. |
+| ⚡**JavaScript** | Lógica de la aplicación y la interactividad del E-commerce (Frontend). |
+| 🛢️**Supabase** | Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario. |
 
 
 ## 🚀 Instalación y Ejecución Local
