@@ -24,6 +24,12 @@ Este proyecto combina el stack web clásico para el frontend con una solución m
 | ⚡**JavaScript** | Lógica de la aplicación y la interactividad del E-commerce (Frontend). |
 | 🛢️**Supabase** | Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario. |
 
+## 🎬 Demostración en Video
+
+A continuación puedes ver el funcionamiento de la aplicación web:
+
+[![Demo del Proyecto](https://img.youtube.com/vi/0kt2s8jlQSE/maxresdefault.jpg)](https://youtu.be/0kt2s8jlQSE)
+
 
 ## 🚀 Instalación y Ejecución Local
 Este proyecto no requiere instalación de dependencias. Está listo para ejecutarse directamente en tu navegador.
