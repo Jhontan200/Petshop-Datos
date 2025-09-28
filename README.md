@@ -15,12 +15,15 @@ Este proyecto simula un sitio web de comercio electrónico especializado en prod
 
 ## 🛠️ Tecnologías Utilizadas
 Este proyecto combina el stack web clásico para el frontend con una solución moderna de backend como servicio (BaaS):
-| Tecnología | Rol |
-|-----------|-----|
-| **HTML** | Estructura y contenido de la página web. |
-| **CSS** | Estilos visuales y diseño responsivo |
-| **JavaScript** | LLógica de la aplicación y la interactividad del E-commerce (Frontend). |
-| **Supabase** | Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario. |
+## 🧰 Tecnologías Utilizadas
+
+|  **Tecnología** | **Rol** |
+|--------------------|-----------|
+| 📝 **HTML** | Estructura y contenido de la página web. |
+| 🎨 **CSS** | Estilos visuales y diseño responsivo. |
+| ⚡ **JavaScript** | Lógica de la aplicación y la interactividad del E-commerce (Frontend). |
+| 🛢️ **Supabase** | Servicio de Base de Datos (BaaS - Backend as a Service) utilizado para almacenar la información de los productos y el inventario. |
+
 
 ## 🚀 Instalación y Ejecución Local
 Este proyecto no requiere instalación de dependencias. Está listo para ejecutarse directamente en tu navegador.
@@ -55,12 +58,9 @@ El sitio ofrece las siguientes características principales:
 
 🛒 Carrito de Compras: Añadir, eliminar y gestionar artículos seleccionados.
 
-## 👨‍💻 Autor y Contacto
-Desarrollado por:
+## 👨‍💻 Autor
 
-**Jhontan200**
-
-[🔗 Perfil GitHub](https://github.com/Jhontan200)
+Desarrollado por: [Jhontan200](https://github.com/Jhontan200)
 
 ## 📄 Licencia
 Distribuido bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
